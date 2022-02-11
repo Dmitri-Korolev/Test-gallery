@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Modal from "./Modal/Modal";
+import Modal from "./components/Modal/Modal";
+// import Gallery from "./components/Gallary/Gallery";
+import GalleryData from "./components/Gallary/GalleryData";
 
 
 function App() {
@@ -7,9 +9,11 @@ function App() {
   return (
     <div className="App">
       <h1>Test App</h1>
-      <div className="" onClick={()=> setModalActive(true)}>
-        Gallery
-      </div>
+      <main className="" onClick={()=> setModalActive(true)}>
+        {/* <Gallery/> */}
+        <GalleryData/>
+      </main>
+      
       <Modal active={modalActive} setActive={setModalActive}/>
     </div>
   );
