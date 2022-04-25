@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const GalleryData = () => {
+const GalleryData = ({setSelectedImg, setActive}) => {
     const [imgData, setImgData] = useState([])
 
     useEffect(()=> {
@@ -10,11 +10,7 @@ const GalleryData = () => {
             if (!response.ok) throw Error(response.statusText);
             return response.json();
         })
-        .then(data => 
-            {
-                setImgData(data)
-            }
-        )
+        .then(data => setImgData(data))
         .catch(error => {
          console.log("error", error);
         });
@@ -27,8 +23,10 @@ const GalleryData = () => {
                 {
                     imgData.map((item) => {
                         return (
-                          <li key={item.id}>
-                            <img src={item.url} alt="" />
+                          <li key={item.id}
+                            onClick={()=> setSelectedImg(item.id)}
+                          >
+                            <img src={item.url} alt="" onClick={() => setActive(true)}/>
                           </li>
                         );
                       })
